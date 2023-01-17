@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Notes and decisions
 
+- The `data.js` file is acting in lieu of an actual API endpoint, which would be hitting a database in an actual project. The API call functionality used by the presentational components is intended to abstract away this layer.
 - Most sizes are in rems rather than absolute values, for scaling and accessibility purposes
 
 ## Available Scripts
