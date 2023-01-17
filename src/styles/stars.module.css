@@ -1,0 +1,9 @@
+.container {
+	white-space: nowrap;
+}
+
+.star {
+	height: 1.5rem;
+	width: 1.5rem;
+	padding: 0.25rem;
+}

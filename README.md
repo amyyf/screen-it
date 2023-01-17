@@ -4,6 +4,10 @@ A movie list application to track the movies we’ve seen and add ratings for ea
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Notes and decisions
+
+- Most sizes are in rems rather than absolute values, for scaling and accessibility purposes
+
 ## Available Scripts
 
 In the project directory, you can run:
