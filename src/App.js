@@ -1,6 +1,10 @@
 import styles from "./styles/index.module.css";
-import { getStarterData } from "./api";
+import formStyles from "./styles/form.module.css";
+
+import { getGenres, getStarterData } from "./api";
 import { Listing } from "./components/Listing";
+import { Input } from "./components/Input";
+import { Button } from "./components/Button";
 
 function App() {
 	return (
@@ -9,9 +13,18 @@ function App() {
 				<h1>Screen it</h1>
 			</header>
 			<main>
-				<section>
-					<form></form>
-				</section>
+				<form className={formStyles.container}>
+					<Input label="Name" type="text" placeholder="Name of the movie" />
+					<Input
+						label="Category"
+						type="select"
+						placeholder="Select a category"
+						selectOptions={getGenres()}
+					/>
+					<Input type="stars" label="Rating" />
+					<Button text="Add Movie" type="submit" />
+				</form>
+
 				<section>
 					<ul className={styles.list}>
 						{getStarterData().map((listing) => (

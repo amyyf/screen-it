@@ -1,0 +1,15 @@
+.button {
+	background: linear-gradient(180deg, #94bfff 0%, var(--color-accent) 100%),
+		#ffffff;
+	border: 1px solid var(--color-accent);
+	box-shadow: 0px 2px 4px rgba(97, 160, 255, 0.5),
+		0px 4px 8px rgba(97, 160, 255, 0.25);
+	border-radius: 8px;
+	height: 4.5rem;
+	margin-top: 2.5rem;
+	width: 100%;
+	font-family: var(--font-family);
+	color: #ffffff;
+	font-size: 1.5rem;
+	font-weight: 600;
+}

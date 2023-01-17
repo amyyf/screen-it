@@ -12,11 +12,11 @@ export const Stars = ({ rating }) => {
 		fills.push("");
 	}
 	return (
-		<p className={styles.container}>
-			{fills.map((filled) => (
-				<Star filled={filled} />
-			))}{" "}
-		</p>
+		<span className={styles.container}>
+			{fills.map((filled, i) => (
+				<Star key={i} filled={filled} />
+			))}
+		</span>
 	);
 };
 

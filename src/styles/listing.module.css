@@ -10,7 +10,7 @@
 	background-color: var(--color-accent);
 	border-radius: 50%;
 	height: 4rem;
-	width: 4rem;
+	flex: 0 0 4rem;
 }
 
 .info {
