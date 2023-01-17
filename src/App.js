@@ -5,7 +5,7 @@ import { Listing } from "./components/Listing";
 function App() {
 	return (
 		<div className={styles.app}>
-			<header className="App-header">
+			<header className={styles.header}>
 				<h1>Screen it</h1>
 			</header>
 			<main>
