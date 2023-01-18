@@ -1,6 +1,6 @@
 import styles from "./../styles/stars.module.css";
 
-export const Stars = ({ rating }) => {
+export const Stars = ({ rating, onSelect }) => {
 	const total = 5;
 	let fills = [];
 
@@ -11,6 +11,36 @@ export const Stars = ({ rating }) => {
 	while (fills.length < total) {
 		fills.push("");
 	}
+
+	// handles the stars as input
+	if (onSelect) {
+		return (
+			<span
+				className={styles.container}
+				onClick={(e) => onSelect(e.target)}
+				onKeyDown={(e) => {
+					if (e.key === "Enter") {
+						onSelect(e.target);
+					}
+				}}
+			>
+				{fills.map((filled, i) => (
+					<label htmlFor={`star-${i}`} key={i}>
+						<input
+							type="radio"
+							name="star"
+							id={`star-${i}`}
+							className={styles.visuallyHidden}
+						/>
+						<Star filled={filled} position={i + 1} button />
+						<span className={styles.visuallyHidden}>{`${i + 1} star`}</span>
+					</label>
+				))}
+			</span>
+		);
+	}
+
+	// handles the stars as presentation
 	return (
 		<span className={styles.container}>
 			{fills.map((filled, i) => (
@@ -20,13 +50,14 @@ export const Stars = ({ rating }) => {
 	);
 };
 
-const Star = ({ filled, position }) => {
+const Star = ({ filled, position, button }) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 576 512"
 			className={styles.star}
 			data-position={position}
+			tabIndex={button && 0}
 		>
 			{/* <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
 			<path

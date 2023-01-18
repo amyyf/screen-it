@@ -87,17 +87,18 @@ const SelectInput = ({
 
 const StarsInput = ({ label, rating, setRating }) => {
 	const updateRating = (element) => {
-		const starPosition = element.parentElement.getAttribute("data-position");
+		if (!element || !element.nextSibling) return;
+		// the selected element differs for keydown and click events - handle both.
+		const starPosition =
+			element.getAttribute("data-position") ??
+			element.nextSibling.getAttribute("data-position");
 		setRating(starPosition);
 	};
 
 	return (
-		<div
-			className={styles.starsContainer}
-			onClick={(e) => updateRating(e.target)}
-		>
+		<div className={styles.starsContainer}>
 			<div className={styles.label}>{label}</div>
-			<Stars rating={rating} />
+			<Stars rating={rating} onSelect={updateRating} />
 		</div>
 	);
 };
