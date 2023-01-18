@@ -7,19 +7,27 @@ export const getGenres = () =>
 		display: GENRES[genre],
 	}));
 
-export const getStarterData = () => STARTER_DATA;
+const getStarterData = () => STARTER_DATA;
 
-// even though this is just setting state, I am still trying to keep the data separation illusion here
-export const addMovie = (name, category, rating, movieData, setMovieData) => {
-	setMovieData([
-		{
-			title: name,
-			id: uniqid(),
-			genre: GENRES[category],
-			rating: rating,
-		},
-		...movieData,
-	]);
+export const getMovies = () => {
+	const currentData = window.localStorage.getItem("screen-it");
+
+	if (currentData) return JSON.parse(currentData);
+
+	window.localStorage.setItem("screen-it", JSON.stringify(getStarterData()));
+
+	return JSON.parse(window.localStorage.getItem("screen-it"));
+};
+
+export const addMovie = (name, category, rating) => {
+	const currentData = getMovies();
+	currentData.unshift({
+		title: name,
+		id: uniqid(),
+		genre: GENRES[category],
+		rating: rating,
+	});
+	window.localStorage.setItem("screen-it", JSON.stringify(currentData));
 };
 
 const articles = ["a", "an", "the"];

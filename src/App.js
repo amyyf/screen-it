@@ -1,12 +1,11 @@
 import styles from "./styles/index.module.css";
 
-import { useState } from "react";
-import { getStarterData } from "./api";
+import { getMovies } from "./api";
 import { Listing } from "./components/Listing";
 import { Form } from "./components/Form";
 
 function App() {
-	const [movieData, setMovieData] = useState(getStarterData());
+	const data = getMovies();
 
 	return (
 		<div className={styles.app}>
@@ -14,10 +13,10 @@ function App() {
 				<h1>Screen it</h1>
 			</header>
 			<main>
-				<Form movieData={movieData} setMovieData={setMovieData} />
+				<Form />
 				<section>
 					<ul className={styles.list}>
-						{movieData.map((listing) => (
+						{data.map((listing) => (
 							<li key={listing.id}>
 								<Listing
 									genre={listing.genre}

@@ -2,11 +2,13 @@
 
 A movie list application to track the movies we’ve seen and add ratings for each of them.
 
+To use it locally, clone the repo, `npm install`, and run `npm start` to see the app at <http://localhost:3000>.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Notes and decisions
 
-- The `data.js` file is acting in lieu of an actual API endpoint, which would be hitting a database in an actual project. The API call functionality used by the presentational components is intended to abstract away this layer. While new movies can be added locally in this version, they don't persist across page refresh, so the ability to add movies is more like a proof of concept than a fully functional application here.
+- The `data.js` file combined with local storage is acting in lieu of an actual API endpoint, which would be hitting a database in an actual project. The API call functionality used by the presentational components is intended to abstract away this layer.
 - A form library (i.e. [Formik](https://formik.org/)) would be immensely helpful for improving data validation and form experience. I didn't add one of these for the sake of time and simplicity.
 - I kept most sizes are in rems rather than absolute values, for scaling and accessibility purposes.
 - There is one discrepancy with the design that I chose not to fix - the Harry Potter film in the design is abbreviated as HPS on the avatar. I included the full movie name in my data, so it ends up abbreviated as HPSS. I decided this was probably a design choice for the sake of demonstration, but as a Harry Potter fan, I chose to go for title accuracy. Also to see what happened with an unshown edge case (longer acronym). It held up.

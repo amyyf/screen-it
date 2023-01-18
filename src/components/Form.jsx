@@ -5,7 +5,7 @@ import { Button } from "./Button";
 import { addMovie, getGenres } from "../api";
 import { useState } from "react";
 
-export const Form = ({ movieData, setMovieData }) => {
+export const Form = () => {
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
 	const [rating, setRating] = useState(0);
@@ -14,14 +14,11 @@ export const Form = ({ movieData, setMovieData }) => {
 		<form
 			className={styles.container}
 			onSubmit={(e) => {
-				e.preventDefault();
 				if (!name || !category || !rating) {
+					e.preventDefault();
 					return window.alert("Some movie data is missing!");
 				}
-				addMovie(name, category, rating, movieData, setMovieData);
-				setName("");
-				setCategory("");
-				setRating(0);
+				addMovie(name, category, rating);
 			}}
 		>
 			<Input
