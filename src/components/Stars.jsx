@@ -14,19 +14,20 @@ export const Stars = ({ rating }) => {
 	return (
 		<span className={styles.container}>
 			{fills.map((filled, i) => (
-				<Star key={i} filled={filled} />
+				<Star key={i} filled={filled} position={i + 1} />
 			))}
 		</span>
 	);
 };
 
-const Star = ({ filled }) => {
+const Star = ({ filled, position }) => {
 	const fillColor = filled ? "var(--color-star-filled)" : "var(--color-star)";
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 576 512"
 			className={styles.star}
+			data-position={position}
 		>
 			{/* <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
 			<path

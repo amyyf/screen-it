@@ -1,7 +1,14 @@
 import styles from "./../styles/input.module.css";
 import { Stars } from "./Stars";
 
-export const Input = ({ label, type, placeholder, selectOptions }) => {
+export const Input = ({
+	label,
+	type,
+	placeholder,
+	selectOptions,
+	value,
+	onChange,
+}) => {
 	switch (type) {
 		case "select":
 			return (
@@ -9,16 +16,25 @@ export const Input = ({ label, type, placeholder, selectOptions }) => {
 					label={label}
 					placeholder={placeholder}
 					selectOptions={selectOptions}
+					value={value}
+					onChange={onChange}
 				/>
 			);
 		case "stars":
-			return <StarsInput label={label} />;
+			return <StarsInput label={label} rating={value} setRating={onChange} />;
 		default:
-			return <BaseInput label={label} placeholder={placeholder} />;
+			return (
+				<BaseInput
+					label={label}
+					placeholder={placeholder}
+					value={value}
+					onChange={onChange}
+				/>
+			);
 	}
 };
 
-const BaseInput = ({ label, type, placeholder }) => (
+const BaseInput = ({ label, type, placeholder, value, onChange }) => (
 	<label htmlFor={label} className={styles.container}>
 		<div className={styles.label}>{label}</div>
 		<div className={styles.inputWrapper}>
@@ -28,16 +44,30 @@ const BaseInput = ({ label, type, placeholder }) => (
 				id={label}
 				name={label}
 				placeholder={placeholder}
+				value={value}
+				onChange={(e) => onChange(e.target.value)}
 			/>
 		</div>
 	</label>
 );
 
-const SelectInput = ({ label, placeholder, selectOptions }) => (
+const SelectInput = ({
+	label,
+	placeholder,
+	selectOptions,
+	value,
+	onChange,
+}) => (
 	<label htmlFor={label} className={styles.container}>
 		<div className={styles.label}>{label}</div>
 		<div className={styles.selectWrapper}>
-			<select className={styles.selectInput} name={label} id={label}>
+			<select
+				className={styles.selectInput}
+				name={label}
+				id={label}
+				value={value}
+				onChange={(e) => onChange(e.target.value)}
+			>
 				<option value="" className={styles.selectOption} defaultValue>
 					{placeholder}
 				</option>
@@ -55,11 +85,20 @@ const SelectInput = ({ label, placeholder, selectOptions }) => (
 	</label>
 );
 
-const StarsInput = ({ label }) => {
+const StarsInput = ({ label, rating, setRating }) => {
+	const setClasses = (element) => {
+		const starPosition = element.parentElement.getAttribute("data-position");
+		console.log(starPosition);
+		setRating(starPosition);
+	};
+
 	return (
-		<div className={styles.starsContainer}>
+		<div
+			className={styles.starsContainer}
+			onClick={(e) => setClasses(e.target)}
+		>
 			<div className={styles.label}>{label}</div>
-			<Stars rating="0" />
+			<Stars rating={rating} />
 		</div>
 	);
 };
