@@ -17,8 +17,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - I really wanted to add sorting to the movie list view. The default view puts the newest movies at the top of the list. I'd love to be able to sort alphabetically, by genre, by rating, and maybe even filter by some of these categories.
 - I'd like to incorporate handling for swipe events so movies can be edited and deleted. I've used [this library](https://github.com/jerrybendy/react-touch-events) before.
-- This app can be used by a keyboard only, but I would like to test out and further improve the a11y experience.
+- This app can be used by a keyboard only, but I would like to further test out and improve the a11y experience.
 - More consideration for desktop view, if this is not intended to be a mobile-only app.
+- There are dependency warnings that would need to be fixed before putting this in production. I might have an old version of Create React App. I didn't want to dig into node modules while prototyping.
 
 ## Available scripts
 
