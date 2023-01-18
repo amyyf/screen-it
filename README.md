@@ -14,6 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Ideas for future improvements
 
 - I really wanted to add sorting to the movie list view. The default view puts the newest movies at the top of the list. I'd love to be able to sort alphabetically, by genre, by rating, and maybe even filter by some of these categories.
+- I'd like to incorporate handling for swipe events so movies can be edited and deleted. I've used [this library](https://github.com/jerrybendy/react-touch-events) before.
 
 ## Available scripts
 

@@ -58,3 +58,8 @@
 	composes: input;
 	color: var(--color-text-secondary);
 }
+
+.selected {
+	composes: input;
+	color: var(--color-text-primary);
+}

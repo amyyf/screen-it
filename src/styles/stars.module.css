@@ -6,4 +6,9 @@
 	height: 1.5rem;
 	width: 1.5rem;
 	padding: 0.25rem;
+	fill: var(--color-star);
+}
+
+.starFilled {
+	fill: var(--color-star-filled);
 }

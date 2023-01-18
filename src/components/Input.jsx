@@ -62,13 +62,13 @@ const SelectInput = ({
 		<div className={styles.label}>{label}</div>
 		<div className={styles.selectWrapper}>
 			<select
-				className={styles.selectInput}
+				className={value ? styles.selected : styles.selectInput}
 				name={label}
 				id={label}
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
 			>
-				<option value="" className={styles.selectOption} defaultValue>
+				<option value="" defaultValue>
 					{placeholder}
 				</option>
 				{selectOptions.map((selectOption) => (
@@ -86,16 +86,15 @@ const SelectInput = ({
 );
 
 const StarsInput = ({ label, rating, setRating }) => {
-	const setClasses = (element) => {
+	const updateRating = (element) => {
 		const starPosition = element.parentElement.getAttribute("data-position");
-		console.log(starPosition);
 		setRating(starPosition);
 	};
 
 	return (
 		<div
 			className={styles.starsContainer}
-			onClick={(e) => setClasses(e.target)}
+			onClick={(e) => updateRating(e.target)}
 		>
 			<div className={styles.label}>{label}</div>
 			<Stars rating={rating} />
